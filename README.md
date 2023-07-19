@@ -75,7 +75,7 @@ npm init -y
 Clone this repository to your desired folder:
 
 ```sh
-  git clone
+  git clone https://github.com/Rifat8080/dice-roll-game.git
 ```
 
 ### Install

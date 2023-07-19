@@ -1,6 +1,4 @@
-'use strict';
-
-//Selecting elements
+// Selecting elements
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 const score0El = document.getElementById('score--0');
@@ -12,10 +10,11 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
-let scores, currentScore, activePlayer, playing;
+let scores; let currentScore; let activePlayer; let
+  playing;
 
 const init = function () {
-  //Starting conditions
+  // Starting conditions
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
@@ -43,22 +42,21 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active');
 };
 
-//Rolling dice functionality
-btnRoll.addEventListener('click', function () {
+// Rolling dice functionality
+btnRoll.addEventListener('click', () => {
   if (playing) {
     // 1. Generating a random dice roll
     const dice = Math.trunc(Math.random() * 6) + 1;
 
-    //2. Display dice
+    // 2. Display dice
     diceEl.classList.remove('hidden');
     diceEl.src = `./dices/dice-${dice}.png`;
 
-    //3. Check for rolled 1: if true switch to next player
+    // 3. Check for rolled 1: if true switch to next player
     if (dice !== 1) {
       // Add dice to current score
       currentScore += dice;
-      document.getElementById(`current--${activePlayer}`).textContent =
-        currentScore;
+      document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
       // switch to the next player
       switchPlayer();
@@ -68,14 +66,13 @@ btnRoll.addEventListener('click', function () {
 
 // Button hold functionality
 
-btnHold.addEventListener('click', function () {
+btnHold.addEventListener('click', () => {
   if (playing) {
     // Add cureent score to active player's score
     scores[activePlayer] += currentScore;
     // scores[1] = scores[1] + currentScore;
 
-    document.getElementById(`score--${activePlayer}`).textContent =
-      scores[activePlayer];
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
     // Check if player's score is >=100
     if (scores[activePlayer] >= 50) {
